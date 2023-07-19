@@ -1,8 +1,13 @@
 const galleryElement = document.querySelector('.gallery');
 const filtersElement = document.querySelector('.filters');
+const loginButton = document.querySelector('.loginBtn');
+const modalImgContainer = document.querySelector('.modal-img-container')
 
 let works = []
 let categories = []
+let token = sessionStorage.getItem('token') || null;
+
+console.log(token)
 
 const getWorks = async () => {
   await fetch("http://localhost:5678/api/works")
@@ -34,6 +39,34 @@ const createWorks = (data) => {
 
         galleryElement.appendChild(figureElement);
     })
+}
+
+const createWorksModal = (data) => {
+  data.forEach(work => {
+      const imgContainer = document.createElement('div')
+      const imgElement = document.createElement('img');
+      const trashElement = document.createElement('span')
+
+      imgContainer.style.width = '100%'
+      imgContainer.style.position = 'relative'
+
+      imgElement.src = work.imageUrl;
+      imgElement.alt = work.title;
+
+      trashElement.src = 'p'
+      trashElement.classList.add('trash')
+ 
+      trashElement.addEventListener('click', () => {
+        console.log(work.id)
+        // gérer le fetch en delete
+      })
+
+      imgContainer.appendChild(imgElement)
+      imgContainer.appendChild(trashElement)
+
+
+      modalImgContainer.appendChild(imgContainer);
+  })
 }
 
 const createButton = (data) => {
@@ -68,6 +101,13 @@ const init = async () => {
     await getCategories()
     createWorks(works)
     createFilters(categories)
+    createWorksModal(works)
 }
 
 init()
+
+if (token !== null) {
+  filtersElement.style.display = 'none';
+  loginButton.textContent = 'logout'
+}
+
