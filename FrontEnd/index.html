@@ -17,7 +17,11 @@
       referrerpolicy="no-referrer"
     >
 </head>
-<body>
+<body>	
+	<div class="blackbar">
+		<button class="btn-blackbar1"><i class="fa-regular fa-pen-to-square fa-sm" style="color: #ffffff;"></i> Mode édition</button>
+		<button class="btn-blackbar2">publier les changements</button>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -33,6 +37,7 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<button class="modal-btn2 "><i class="fa-regular fa-pen-to-square "></i>modifier</button>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -44,23 +49,50 @@
 	<section id="portfolio">
 		<div class="modal-container">
 			<div class="overlay-modal modal-trigger"></div>
-			<div class="modal">
-				<h1 >Galerie photo</h1>
-				<div class="modal-img-container">
-				<!-- <div><img src="assets/images/abajour-tahina.png" alt="abajour-tahina"><p>éditer</p></div>
-				<div><img src="assets/images/appartement-paris-v.png" alt="appartement-paris-v"><p>éditer</p></div>
-				<div><img src="assets/images/restaurant-sushisen-londres.png" alt="restaurant-sushisen-londres"><p>éditer</p></div>
-				<div><img src="assets/images/la-balisiere.png" alt="la-balisiere"><p>éditer</p></div>
-				<div><img src="assets/images/structures-thermopolis.png" alt="structures-thermopolis"><p>éditer</p></div>
-				<div><img src="assets/images/appartement-paris-x.png" alt="appartement-paris-x"><p>éditer</p></div>
-				<div><img src="assets/images/le-coteau-cassis.png" alt="le-coteau-cassis"><p>éditer</p></div>
-				<div><img src="assets/images/villa-ferneze.png" alt="villa-ferneze"><p>éditer</p></div>
-				<div><img src="assets/images/appartement-paris-xviii.png" alt="appartement-paris-xviii"><p>éditer</p></div>
-				<div><img src="assets/images/bar-lullaby-paris.png" alt="bar-lullaby-paris"><p>éditer</p></div>
-				<div><img src="assets/images/hotel-first-arte-new-delhi.png" alt="hotel-first-arte-new-delhi"><p>éditer</p></div> -->
-			</div>
-				<button class="close-modal modal-trigger">X</button>
-			</div>
+				<div class="modal">
+						<h1 >Galerie photo</h1>
+					<div class="modal-img-container">
+					<!-- <div><img src="assets/images/abajour-tahina.png" alt="abajour-tahina"><p>éditer</p></div>
+					<div><img src="assets/images/appartement-paris-v.png" alt="appartement-paris-v"><p>éditer</p></div>
+					<div><img src="assets/images/restaurant-sushisen-londres.png" alt="restaurant-sushisen-londres"><p>éditer</p></div>
+					<div><img src="assets/images/la-balisiere.png" alt="la-balisiere"><p>éditer</p></div>
+					<div><img src="assets/images/structures-thermopolis.png" alt="structures-thermopolis"><p>éditer</p></div>
+					<div><img src="assets/images/appartement-paris-x.png" alt="appartement-paris-x"><p>éditer</p></div>
+					<div><img src="assets/images/le-coteau-cassis.png" alt="le-coteau-cassis"><p>éditer</p></div>
+					<div><img src="assets/images/villa-ferneze.png" alt="villa-ferneze"><p>éditer</p></div>
+					<div><img src="assets/images/appartement-paris-xviii.png" alt="appartement-paris-xviii"><p>éditer</p></div>
+					<div><img src="assets/images/bar-lullaby-paris.png" alt="bar-lullaby-paris"><p>éditer</p></div>
+					<div><img src="assets/images/hotel-first-arte-new-delhi.png" alt="hotel-first-arte-new-delhi"><p>éditer</p></div> -->
+					</div>
+					<HR ALIGN=CENTER WIDTH="80%">
+
+					<div class="modal-container2">
+						<div class="second-modal ">
+							<h1>Ajout photo</h1>
+							<div class="img-add-modal2">
+							<button class="Ajouter-photo">+ Ajouter photo</button>
+							<p>jpg, png: 4mo max</p>
+							</div>
+							<div class="modal2-title">
+							<label for="title">Titre</label>
+							<input type="text" name="title" id="title">
+							</div>
+							<div class="modal2-categorie">
+							<label for="categorie">Catégorie</label>
+							<select name="categorie" id="categorie"></select>
+							</div>
+							<HR ALIGN=CENTER WIDTH="80%">
+							<input type="submit" value="Valider">
+							<button class="close-second-modal modal-trigger2">X</button>
+						</div>
+							
+					</div>
+						<button  class="add-picture modal-trigger2">Ajouter une photo</button>
+			
+						<button  id="delete-picture">Supprimer la galerie></button>
+						<button class="close-modal modal-trigger">X</button>
+				</div>
+			
 		</div>
 		<h2>Mes Projets <button class="modal-btn modal-trigger"><i class="fa-regular fa-pen-to-square "></i>modifier</button> </h2>
 		<div class="filters"></div>

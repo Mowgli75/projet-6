@@ -2,6 +2,10 @@ const galleryElement = document.querySelector('.gallery');
 const filtersElement = document.querySelector('.filters');
 const loginButton = document.querySelector('.loginBtn');
 const modalImgContainer = document.querySelector('.modal-img-container')
+const blackBarContainer = document.querySelector('.blackbar')
+const modalBtn1 = document.querySelector('.modal-btn')
+const modalBtn2 = document.querySelector('.modal-btn2')
+
 
 let works = []
 let categories = []
@@ -109,5 +113,10 @@ init()
 if (token !== null) {
   filtersElement.style.display = 'none';
   loginButton.textContent = 'logout'
+  blackBarContainer.style.visibility = 'visible'
+  modalBtn1.style.visibility = 'visible'
+  modalBtn2.style.visibility = 'visible'
+
 }
+
 

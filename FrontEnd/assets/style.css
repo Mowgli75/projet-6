@@ -49,7 +49,7 @@ table {
 /** end reset css**/
 body {
 	max-width: 1140px;
-	margin:auto;
+	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
@@ -126,6 +126,39 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+/****** bar noir haut ecran */
+.btn-blackbar1{
+	color: white;
+	background: black;
+	font-size: larger;
+	border: none;
+	cursor: pointer;
+}
+.btn-blackbar2{
+	background: white;
+	font-size:small;
+	font-weight: 700;
+	border: none;
+	border-radius: 20px;
+	height: 40px;
+	padding: 0px 10px;
+	cursor: pointer;
+}
+.blackbar{
+	background-color: black;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+/*** login button */
+
+.loginBtn{
+	cursor: pointer;
+}
+
 /******modal *****/
 .modal-container{
 	position: fixed;
@@ -158,11 +191,15 @@ li:hover {
 	min-width: 300px;
 	padding: 30px;
 	background: #fff;
+	border-radius: 10px;
 	position: absolute;
 	top: 40%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 	transition: opacity 0.4s ease-out;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .modal-container.active .modal{
 	opacity: 1;
@@ -171,7 +208,7 @@ li:hover {
 .modal h1{
 	color: black;
 	font-family:'Courier New', Courier, monospace;
-	margin-bottom: 10px;
+	margin: 40px 0px;
 }
 .modal img{
 	width: 100%;
@@ -180,8 +217,8 @@ li:hover {
 
 .trash {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 10px;
+	right: 10px;
 	background-color: black;
 	color: white;
 	height: 25px;
@@ -191,6 +228,8 @@ li:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	gap: 10px;
+	width: 80%;
+	margin-bottom: 40px;
 }
 .close-modal{
 	padding: 8px 10px;
@@ -207,9 +246,136 @@ li:hover {
 background-color: white;
 border: none;
 font-size: large;
+cursor: pointer;
+visibility: hidden;
 }
 .modal-btn i{
 	padding-right: 5px;
+}
+.modal-btn2{
+	background-color: white;
+	border: none;
+	font-size: large;
+	padding: 10px 0px 0px 60px;
+	visibility: hidden;
+}
+.modal-btn2 i{
+	padding-right: 5px;
+}
+
+
+/* 2eme modale */
+.add-picture{
+	width: 220px;
+	height: 40px;
+	margin: 20px 0px;
+	cursor: pointer;
+	border-radius:60px ;
+	background-color: #1D6154;
+	color: white;
+}
+.modal-container2{
+	position:fixed;
+	top:0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	transition: visibility 0.4s;
+}
+.modal-container2.active {
+	display: block;
+}
+.modal-container2.active .second-modal{
+	opacity: 1;
+	transition: opacity 0.4s 0.2s ease-out;
+}
+.second-modal{
+	opacity: 0;
+	width: 95%;
+	max-width: 700px;
+	min-width: 300px;
+	padding: 30px;
+	background: #fff;
+	border-radius: 10px;
+	position: absolute;
+	top: 10%;
+	left: 16%;
+	transform: translate(-50%,-50%);
+	transition: opacity 0.4s ease-out;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+.close-second-modal{
+	padding: 8px 10px;
+	border: none;
+	font-size: 18px;
+	position: absolute;
+	top:10px;
+	right: 10px;
+	cursor: pointer;
+	background: #fff;
+}
+
+.Ajouter-photo{
+width: 40%;
+height: 40px;
+border: none;
+border-radius: 60px;
+font-size: medium;
+font-weight: 600;
+color: rgb(80, 123, 154);
+background-color: rgb(160, 180, 192);
+cursor: pointer;
+}
+.img-add-modal2{
+	background-color: rgb(212, 227, 236);
+	width: 80%;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+.modal2-title{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+.modal2-title input{
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 50px;
+	margin: 10px 0px;
+}
+.modal2-categorie{
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+.modal2-categorie select{
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 50px;
+	margin-bottom: 30px;
+	margin: 10px 0px;
+
+}
+.second-modal input{
+	cursor: pointer;
+	height: 40px;
+}
+
+#delete-picture {
+	background: #fff;
+	border: none;
+	color: red;
+	margin: 5px;
+	padding: 0px;
 }
 
 
