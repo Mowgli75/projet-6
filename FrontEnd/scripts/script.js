@@ -11,8 +11,6 @@ let works = []
 let categories = []
 let token = sessionStorage.getItem('token') || null;
 
-console.log(token)
-
 const getWorks = async () => {
   await fetch("http://localhost:5678/api/works")
     .then((response) => {
@@ -45,11 +43,30 @@ const createWorks = (data) => {
     })
 }
 
+const deleteWork = async (id) => {
+ return await  fetch(`http://localhost:5678/api/works/${id}`, {
+  method: 'DELETE',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+  }
+ })
+}
+
+export const updateUi = async () => {
+  works = []
+  galleryElement.innerHTML = "";
+  modalImgContainer.innerHTML = "";
+  await getWorks()
+  createWorks(works)
+  createWorksModal(works)
+}
+
 const createWorksModal = (data) => {
   data.forEach(work => {
       const imgContainer = document.createElement('div')
       const imgElement = document.createElement('img');
       const trashElement = document.createElement('span')
+      const editElement = document.createElement('p')
 
       imgContainer.style.width = '100%'
       imgContainer.style.position = 'relative'
@@ -57,17 +74,24 @@ const createWorksModal = (data) => {
       imgElement.src = work.imageUrl;
       imgElement.alt = work.title;
 
-      trashElement.src = 'p'
+      trashElement.innerHTML = '<i class="fa-solid fa-trash-can fa-sm" style="color: #adb1b8;"></i>'
       trashElement.classList.add('trash')
- 
-      trashElement.addEventListener('click', () => {
-        console.log(work.id)
-        // gérer le fetch en delete
+
+      editElement.innerHTML = 'éditer'
+
+      trashElement.addEventListener('click', async () => {
+       
+        const response = await deleteWork(work.id)
+        console.log(response)
+
+        if (response.status === 204) {
+          await updateUi()
+        }
       })
 
       imgContainer.appendChild(imgElement)
       imgContainer.appendChild(trashElement)
-
+      imgContainer.appendChild(editElement)
 
       modalImgContainer.appendChild(imgContainer);
   })
@@ -86,8 +110,8 @@ const createButton = (data) => {
 
     const filteredWorks = works.filter(work => work.categoryId === data.id)
     galleryElement.innerHTML = ""
-
-    createWorks(filteredWorks)
+ 
+     createWorks(filteredWorks)
   })
 
   filtersElement.appendChild(buttonEl)
@@ -110,6 +134,11 @@ const init = async () => {
 
 init()
 
+const logout = () => {
+  sessionStorage.removeItem('token')
+  window.location.reload()
+}
+
 if (token !== null) {
   filtersElement.style.display = 'none';
   loginButton.textContent = 'logout'
@@ -117,6 +146,10 @@ if (token !== null) {
   modalBtn1.style.visibility = 'visible'
   modalBtn2.style.visibility = 'visible'
 
+  loginButton.addEventListener('click', logout)
+
 }
+
+// export { getWorks, createWorks, createWorksModal, works}
 
 

@@ -168,6 +168,9 @@ li:hover {
 	height: 100vh;
 	visibility: hidden;
 	transition: visibility 0.4s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .modal-container.active .overlay-modal{
 	opacity: 1;
@@ -178,11 +181,13 @@ li:hover {
 }
 .overlay-modal{
 	opacity: 0;
-	position : absolute;
 	width: 100%;
 	height: 100%;
 	background: hsla(0, 0%, 64%, 0.527);
 	transition: opacity 0.4s 0.2s ease-out ;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .modal{
 	opacity: 0;
@@ -192,17 +197,15 @@ li:hover {
 	padding: 30px;
 	background: #fff;
 	border-radius: 10px;
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%,-50%);
 	transition: opacity 0.4s ease-out;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
 }
-.modal-container.active .modal{
+.modal.active {
 	opacity: 1;
+	display: flex;
 	transition: opacity 0.4s 0.2s ease-out;
 }
 .modal h1{
@@ -223,6 +226,10 @@ li:hover {
 	color: white;
 	height: 25px;
 	width: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
 }
 .modal-img-container{
 	display: grid;
@@ -276,15 +283,17 @@ visibility: hidden;
 }
 .modal-container2{
 	position:fixed;
-	top:0;
+	top: 0;
 	left: 0;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	display: none;
 	transition: visibility 0.4s;
 }
 .modal-container2.active {
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .modal-container2.active .second-modal{
 	opacity: 1;
@@ -293,21 +302,22 @@ visibility: hidden;
 .second-modal{
 	opacity: 0;
 	width: 95%;
-	max-width: 700px;
+	max-width: 500px;
 	min-width: 300px;
 	padding: 30px;
 	background: #fff;
 	border-radius: 10px;
-	position: absolute;
-	top: 10%;
-	left: 16%;
-	transform: translate(-50%,-50%);
 	transition: opacity 0.4s ease-out;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 15px;
+}
+.second-modal.active {
+	display: flex;
+	opacity: 1;
+	position: relative;
 }
 .close-second-modal{
 	padding: 8px 10px;
@@ -320,20 +330,32 @@ visibility: hidden;
 	background: #fff;
 }
 
+.back-modal{
+	background-color: white;
+	border: none;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	cursor: pointer;
+}
+
 .Ajouter-photo{
-width: 40%;
+width: 80%;
 height: 40px;
 border: none;
 border-radius: 60px;
-font-size: medium;
+font-size: small;
 font-weight: 600;
 color: rgb(80, 123, 154);
 background-color: rgb(160, 180, 192);
 cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .img-add-modal2{
 	background-color: rgb(212, 227, 236);
-	width: 80%;
+	width: 100%;
 	height: 200px;
 	display: flex;
 	flex-direction: column;
@@ -344,18 +366,20 @@ cursor: pointer;
 .modal2-title{
 	display: flex;
 	flex-direction: column;
-	width: 80%;
+	width: 100%;
+	margin: 10px 0px;
 }
 .modal2-title input{
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	height: 50px;
 	margin: 10px 0px;
+	
 }
 .modal2-categorie{
 	display: flex;
 	flex-direction: column;
-	width: 80%;
+	width: 100%;
 }
 .modal2-categorie select{
 	border: none;
@@ -363,8 +387,8 @@ cursor: pointer;
 	height: 50px;
 	margin-bottom: 30px;
 	margin: 10px 0px;
-
 }
+
 .second-modal input{
 	cursor: pointer;
 	height: 40px;
@@ -378,6 +402,12 @@ cursor: pointer;
 	padding: 0px;
 }
 
+.second-modal input[type="submit"]{
+	background-color: grey;
+	display: flex;
+	justify-content: center;
+	cursor: not-allowed;
+}
 
 /**** filters */
 
