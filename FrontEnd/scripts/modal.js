@@ -10,6 +10,8 @@ const inputFileModalElement = document.querySelector("#input-file");
 
 const sessionToken = sessionStorage.getItem("token");
 
+/* event clic pour la 1ere modal */
+
 modalTriggers.forEach((trigger) =>
   trigger.addEventListener("click", toggleModal)
 );
@@ -25,6 +27,12 @@ function toggleModal() {
   document.querySelector(".modal").classList.add("active");
 }
 
+document.querySelector(".close-modal").addEventListener("click", () => {
+  document.querySelector(".modal").classList.remove("active");
+});
+
+/* event clic pour la 2eme modal */
+
 modalTriggers2.forEach((trigger2) => {
   trigger2.addEventListener("click", toggleModal2)}
 );
@@ -34,10 +42,6 @@ function toggleModal2() {
   modalContainer2.classList.toggle("active");
 }
 
-document.querySelector(".close-modal").addEventListener("click", () => {
-  document.querySelector(".modal").classList.remove("active");
-});
-
 document.querySelector(".close-second-modal").addEventListener("click", () => {
     clearModalForm()
   document.querySelector(".modal").classList.remove("active");
@@ -45,11 +49,15 @@ document.querySelector(".close-second-modal").addEventListener("click", () => {
   modalContainer.classList.remove("active");
 });
 
+/* event pour la fleche de la second modal */
+
 document.querySelector(".back-modal").addEventListener("click", () => {
     clearModalForm()
   document.querySelector(".modal").classList.toggle("active");
   modalContainer2.classList.remove("active");
 });
+
+/* fonction pour ajouter les images dans la second modal */
 
 function addImg(data) {
   const newImg = document.createElement("img");
@@ -62,16 +70,6 @@ function addImg(data) {
   inputFileModalElement.style.display = "none";
   document.querySelector(".Ajouter-photo").style.display = "none";
   document.querySelector(".img-add-modal2 p").style.display = "none";
-}
-
-function clearModalForm() {
-    formModal2El.reset();
-    const modalImg = document.querySelector('.img-add-modal2 img');
-    if (modalImg) {
-        modalImg.remove()
-        document.querySelector(".Ajouter-photo").style.display = "flex";
-        document.querySelector(".img-add-modal2 p").style.display = "block";
-    }
 }
 
 inputFileModalElement.addEventListener("change", (e) => {
@@ -90,6 +88,20 @@ const valider = async (data) => {
     body: data,
   });
 };
+
+/* fonction pour que lorsqu'on ferme la modale elle redevient vierge quand on retourne dessus */
+
+function clearModalForm() {
+    formModal2El.reset();
+    const modalImg = document.querySelector('.img-add-modal2 img');
+    if (modalImg) {
+        modalImg.remove()
+        document.querySelector(".Ajouter-photo").style.display = "flex";
+        document.querySelector(".img-add-modal2 p").style.display = "block";
+    }
+}
+
+/* fonction pour empeche de valider le formulaire en cas de non remplissage des champs */
 
 const formInputModal2 = document.querySelector(
   '#modal2-form input[type="text"]'
@@ -125,6 +137,8 @@ formInputModal2.addEventListener("change", () => {
 formSelectEl.addEventListener("change", () => {
   toggleForm();
 });
+
+/* event pour submit le formulaire et enregistrer les photos qu'on ajoute */
 
 formModal2El.addEventListener("submit", async (e) => {
   e.preventDefault();

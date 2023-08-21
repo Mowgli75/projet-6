@@ -1,6 +1,6 @@
 const formElement = document.querySelector('#form')
-// const emailEl = document.querySelector('#email')
-// emailEl.value  <== recuperer valeur de l'input
+
+/* Partie Login submit info */
 
 const login = async (data) => {
 const user = {
@@ -30,7 +30,7 @@ if (response.status === 200) {
 
 if (response.status === 401 || response.status === 404) {
     console.log(response)
-    // settimeout
+    
 }
 
 })

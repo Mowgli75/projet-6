@@ -11,6 +11,8 @@ let works = []
 let categories = []
 let token = sessionStorage.getItem('token') || null;
 
+/* Partie recuperation du projet via l'api*/
+
 const getWorks = async () => {
   await fetch("http://localhost:5678/api/works")
     .then((response) => {
@@ -24,6 +26,8 @@ const getCategories = async () => {
   .then(response => response.json())
   .then(data => categories.push(...data))
 }
+
+/* Partie ajout des images */
 
 const createWorks = (data) => {
     data.forEach(work => {
@@ -43,6 +47,8 @@ const createWorks = (data) => {
     })
 }
 
+/* Partie suppresion des images */
+
 const deleteWork = async (id) => {
  return await  fetch(`http://localhost:5678/api/works/${id}`, {
   method: 'DELETE',
@@ -51,6 +57,7 @@ const deleteWork = async (id) => {
   }
  })
 }
+/* Partie export des fonctions pour la modale */
 
 export const updateUi = async () => {
   works = []
@@ -60,6 +67,9 @@ export const updateUi = async () => {
   createWorks(works)
   createWorksModal(works)
 }
+
+
+/* Partie ajout des images pour la modale */
 
 const createWorksModal = (data) => {
   data.forEach(work => {
@@ -96,6 +106,7 @@ const createWorksModal = (data) => {
       modalImgContainer.appendChild(imgContainer);
   })
 }
+/* Partie bouton pour les filtres */
 
 const createButton = (data) => {
   const buttonEl = document.createElement('button')
@@ -117,12 +128,16 @@ const createButton = (data) => {
   filtersElement.appendChild(buttonEl)
 }
 
+/* Partie filtre */ 
+
 const createFilters = (categories) => {
   createButton({id: 0, name: 'Tous'})
   categories.forEach(category => {
     createButton(category)
   })
 }
+
+/* Partie fonction init pour appeler les autres fonctions en une */
 
 const init = async () => {
     await getWorks()
@@ -133,6 +148,8 @@ const init = async () => {
 }
 
 init()
+
+/* partie bouton logout */
 
 const logout = () => {
   sessionStorage.removeItem('token')
@@ -150,6 +167,5 @@ if (token !== null) {
 
 }
 
-// export { getWorks, createWorks, createWorksModal, works}
 
 
