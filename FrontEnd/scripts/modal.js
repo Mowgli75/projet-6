@@ -145,8 +145,6 @@ formModal2El.addEventListener("submit", async (e) => {
   const data = new FormData(formModal2El);
   const response = await valider(data);
   const infoModal2 = await response.json();
-  console.log(response);
-  console.log(infoModal2);
   toggleForm();
 
   if (response.status === 201) {
@@ -154,6 +152,6 @@ formModal2El.addEventListener("submit", async (e) => {
   }
 
   if (response.status === 401 || response.status === 404) {
-    console.log(response);
+     
   }
 });

@@ -29,8 +29,7 @@ if (response.status === 200) {
 }
 
 if (response.status === 401 || response.status === 404) {
-    console.log(response)
-    
+   
 }
 
 })
